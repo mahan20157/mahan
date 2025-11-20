@@ -1,0 +1,23 @@
+<style>
+  /* سایر استایل‌ها */
+  
+  #contact {
+      background: #caf0f8; /* ← اینجا رنگ پس‌زمینه بخش تماس با ما */
+      color: #fff;      /* ← اینجا رنگ متن */
+  }
+
+  #contact input, #contact textarea {
+      border: 1px solid #ffce00; /* رنگ حاشیه فرم */
+  }
+
+  #contact button {
+      background: #ffce00;
+      color: #333;
+  }
+
+  #contact button:hover {
+      background: #ffc700cc;
+  }
+
+  /* سایر استایل‌ها ادامه دارد... */
+</style>
