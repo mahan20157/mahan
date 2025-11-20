@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت حرفه‌ای با JS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0,0,0,0.5);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ffce00;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #ffc700cc;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>سایت حرفه‌ای با JS</h1>
+    <nav>
+        <a href="#home">خانه</a>
+        <a href="#about">درباره ما</a>
+        <a href="#contact">تماس</a>
+    </nav>
+</header>
+
+<section id="home">
+    <h2>خوش آمدید!</h2>
+    <p>این یک سایت نمونه حرفه‌ای است که با HTML، CSS و JS ساخته شده است.</p>
+    <button id="greetBtn">پیام خوش آمد گویی</button>
+</section>
+
+<section id="about">
+    <h2>درباره ما</h2>
+    <p>ما عاشق برنامه نویسی وب هستیم و سایت‌های زیبا و تعاملی می‌سازیم.</p>
+</section>
+
+<section id="contact">
+    <h2>تماس با ما</h2>
+    <p>ایمیل: info@example.com</p>
+    <p>تلفن: ۰۹۱۲۳۴۵۶۷۸۹</p>
+</section>
+
+<footer>
+    &copy; 2025 تمام حقوق محفوظ است
+</footer>
+
+<script>
+    const btn = document.getElementById('greetBtn');
+    btn.addEventListener('click', () => {
+        alert("سلام! خوش آمدید به سایت حرفه‌ای ما 😊");
+    });
+</script>
+
+</body>
+</html>
+
+
