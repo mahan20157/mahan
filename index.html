@@ -1,62 +1,27 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>سایت من</title>
-
-    <style>
-        body { margin: 0; font-family: sans-serif; background: #f5f5f5; }
-        header { background: #2575fc; color: white; padding: 20px; text-align: center; }
-        nav { background: #1b4fbf; padding: 10px; display: flex; justify-content: center; }
-        nav a { color: #fff; text-decoration: none; padding: 12px 18px; }
-        nav a:hover { background: #163f99; border-radius: 8px; }
-        section { padding: 30px; }
-        footer { text-align: center; padding: 20px; background: #eee; }
-    </style>
+    <meta charset="UTF-8">
+    <title>صفحه اصلی</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-    <h1>سایت ساده با HTML , CSS , JS</h1>
-</header>
+<div class="container fade">
+    <h1>به سایت ما خوش آمدید</h1>
+    <p>سایتی با طراحی حرفه‌ای و مدرن ✨</p>
 
-<nav>
-    <a href="#about">درباره ما</a>
-    <a href="#services">خدمات</a>
-    <a href="#contact">تماس</a>
-    <a href="login.html">ورود</a>  <!-- 🔐 لینک صفحه لاگین -->
-</nav>
-
-<section id="about">
-    <h2>درباره ما</h2>
-    <p>این یک سایت نمونه ساده است.</p>
-</section>
-
-<section id="services">
-    <h2>خدمات</h2>
-    <p>در این بخش خدمات خود را وارد کنید.</p>
-</section>
-
-<section id="contact">
-    <h2>تماس با ما</h2>
-    <button onclick="sendMessage()">ارسال پیام</button>
-    <p id="msg" style="color: green;"></p>
-</section>
-
-<footer>
-    © 2025 - طراحی توسط ماهان
-</footer>
+    <a class="btn" href="login.html">ورود به حساب</a>
+</div>
 
 <script>
-    function sendMessage() {
-        document.getElementById("msg").innerHTML = "پیام شما ارسال شد ✔️";
-    }
+    document.body.classList.add("loaded");
 </script>
 
 </body>
 </html>
+
+
 
 
 
