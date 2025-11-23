@@ -78,14 +78,8 @@
   </form>
 </section>
 
-<script>
-  // دکمه خوش آمد
-  const btn = document.getElementById('greetBtn');
-  btn.addEventListener('click', () => {
-    alert("اگر قبلا وارد شدید نام کاربری خود را وارد کنید ولی اگر قبلا وارد نشدید ثبت نام کنید");
-  });
 
-  // انیمیشن اسکرول
+  
   const faders = document.querySelectorAll('.fade-in');
   const appearOptions = {threshold:0.2};
   const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
@@ -105,7 +99,7 @@
     else header.classList.remove('scrolled');
   });
 
-  // فرم تماس ساده
+  
   const form = document.getElementById('contactForm');
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -118,6 +112,7 @@
 
 </body>
 </html>
+
 
 
 
