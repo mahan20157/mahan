@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ثبت‌نام — Mahan Web</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;600&display=swap');
+
+:root{ --bg:#021027; --card:rgba(255,255,255,0.06); --accent1:#7c3aed; --accent2:#06b6d4; }
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; font-family:"Vazirmatn",sans-serif; background:linear-gradient(180deg,#001833,#021027);
+  color:#e6f6ff; display:flex; align-items:center; justify-content:center; padding:28px;
+}
+
+.card{
+  width:100%; max-width:420px; background:var(--card); padding:28px; border-radius:16px; text-align:center;
+  box-shadow:0 10px 40px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03); backdrop-filter: blur(8px);
+  animation:pop .5s ease both;
+}
+@keyframes pop{ from{transform:translateY(12px); opacity:0} to{transform:none; opacity:1} }
+
+.logo{ display:flex; align-items:center; gap:12px; justify-content:center; margin-bottom:6px }
+.logo svg{ width:48px; height:48px }
+
+h2{ margin:6px 0 16px 0; font-weight:700 }
+
+.input{ margin:10px 0; position:relative }
+.input input{
+  width:100%; padding:12px 14px; border-radius:10px; border:none; outline:none;
+  background:rgba(255,255,255,0.03); color:#e6f6ff; font-size:15px;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
+}
+.note{ font-size:13px; color:#bfeaf8; opacity:0.9; margin-top:6px }
+
+.btn{
+  width:100%; margin-top:14px; padding:12px; border-radius:10px; background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#021027; font-weight:800; border:none; cursor:pointer; font-size:15px; transition:.25s;
+}
+.btn:hover{ transform:scale(1.02) }
+
+.link{ display:block; margin-top:12px; color:#cfefff; text-decoration:none; opacity:0.9 }
+.alert{ margin-top:12px; padding:10px; border-radius:8px; font-size:14px }
+
+.success{ background:rgba(6,182,212,0.12); color:#bff3ff; border:1px solid rgba(6,182,212,0.12) }
+.error{ background:rgba(255,75,75,0.07); color:#ffb8b8; border:1px solid rgba(255,75,75,0.06) }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">
+    <svg viewBox="0 0 64 64"><defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect rx="12" width="64" height="64" fill="url(#g2)"/><path d="M20 44 L32 20 L44 44 Z" fill="#fff" opacity="0.95"/></svg>
+  </div>
+
+  <h2>ثبت‌نام در Mahan Web</h2>
+
+  <div class="input"><input id="name" placeholder="نام کامل"></div>
+  <div class="input"><input id="email" placeholder="ایمیل (برای ورود)"></div>
+  <div class="input"><input id="pwd" type="password" placeholder="رمز عبور"></div>
+
+  <button class="btn" onclick="doSignup()">ثبت‌نام</button>
+
+  <a class="link" href="login.html">حالا وارد شوید →</a>
+
+  <div id="msg"></div>
+  <p class="note">حساب‌ها در مرورگر شما ذخیره می‌شوند (localStorage). برای امنیت واقعی به بک‌اند نیاز است.</p>
+</div>
+
+<script>
+/* ساده و امن برای پروژه‌ی static: هش‌کردن واقعی نیاز به سرور است.
+   ما برای نمایشی: رمز را با btoa ذخیره می‌کنیم (NOT SECURE - فقط demo). */
+function loadUsers(){
+  try { return JSON.parse(localStorage.getItem('mw_users')||'[]'); } catch(e){ return [] }
+}
+function saveUsers(u){ localStorage.setItem('mw_users', JSON.stringify(u)); }
+
+function doSignup(){
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim().toLowerCase();
+  const pwd = document.getElementById('pwd').value;
+
+  const msgEl = document.getElementById('msg'); msgEl.innerHTML='';
+
+  if(!name || !email || !pwd){ msgEl.innerHTML = '<div class="alert error">لطفاً تمام فیلدها را پر کنید</div>'; return; }
+  if(pwd.length < 4){ msgEl.innerHTML = '<div class="alert error">رمز حداقل 4 کاراکتر باشد</div>'; return; }
+
+  let users = loadUsers();
+  if(users.find(x=>x.email === email)){ msgEl.innerHTML = '<div class="alert error">این ایمیل قبلاً ثبت شده</div>'; return; }
+
+  // ذخیره (به صورت پایه‌ای)
+  users.push({ name, email, pwd: btoa(pwd), created: Date.now() });
+  saveUsers(users);
+
+  msgEl.innerHTML = '<div class="alert success">ثبت‌نام موفق! حالا وارد شوید.</div>';
+  setTimeout(()=> location.href = 'login.html', 900);
+}
+</script>
+
+</body>
+</html>
