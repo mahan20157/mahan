@@ -3,11 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>ورود</title>
-    <link rel="stylesheet" href="style.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Vazirmatn", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at bottom, #000428, #004e92);
+    animation: fade 1s forwards;
+    color: white;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.login-box {
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #00eaff;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #fff;
+    transform: scale(1.03);
+}
+
+a.back {
+    display: block;
+    margin-top: 15px;
+    color: #fff;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+a.back:hover {
+    opacity: 1;
+}
+</style>
+
 </head>
 <body>
 
-<div class="login-box fade">
+<div class="login-box">
     <h2>ورود به حساب</h2>
 
     <input type="text" id="user" placeholder="نام کاربری">
@@ -15,7 +89,7 @@
 
     <button class="btn" onclick="login()">ورود</button>
 
-    <a class="back" href="index.html">بازگشت به صفحه اصلی</a>
+    <a class="back" href="index.html">بازگشت</a>
 </div>
 
 <script>
@@ -23,16 +97,15 @@ function login() {
     let u = document.getElementById("user").value;
     let p = document.getElementById("pass").value;
 
-    if(u === "mahan" && p === "1234"){
+    if (u === "mahan" && p === "1234") {
         alert("ورود موفق ✔️");
     } else {
-        alert("نام کاربری یا رمز اشتباه است ❌");
+        alert("❌ نام کاربری یا رمز اشتباه است");
     }
 }
-
-document.body.classList.add("loaded");
 </script>
 
 </body>
 </html>
+
 
