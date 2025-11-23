@@ -3,23 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>صفحه اصلی</title>
-    <link rel="stylesheet" href="style.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Vazirmatn", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #1e3c72, #2a5298);
+    animation: fade 1s forwards;
+    color: white;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.card {
+    background: rgba(255,255,255,0.12);
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+    border-radius: 18px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+}
+
+h1 {
+    margin: 0 0 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    background: #00eaff;
+    padding: 12px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: scale(1.05);
+}
+</style>
+
 </head>
 <body>
 
-<div class="container fade">
-    <h1>به سایت ما خوش آمدید</h1>
-    <p>سایتی با طراحی حرفه‌ای و مدرن ✨</p>
-
+<div class="card">
+    <h1>به سایت ما خوش آمدید ✨</h1>
+    <p>طراحی مدرن و حرفه‌ای</p>
     <a class="btn" href="login.html">ورود به حساب</a>
 </div>
 
-<script>
-    document.body.classList.add("loaded");
-</script>
-
 </body>
 </html>
+
 
 
 
