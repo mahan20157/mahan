@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>ورود به سایت</title>
+</head>
+<body>
+    <h2>صفحه لاگین</h2>
+
+    <form onsubmit="return loginUser()">
+        <label>نام کاربری:</label><br>
+        <input type="text" id="username"><br><br>
+
+        <label>رمز عبور:</label><br>
+        <input type="password" id="password"><br><br>
+
+        <button type="submit">ورود</button>
+    </form>
+
+    <p>
+        <button onclick="window.location.href='index.html'">
+            بازگشت به صفحه اول
+        </button>
+    </p>
+
+    <script>
+        function loginUser() {
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+
+            // لاگین نمونه
+            if (user === "admin" && pass === "1234") {
+                alert("ورود موفق! در حال انتقال به صفحه اول...");
+                window.location.href = "index.html";
+                return false;
+            } else {
+                alert("نام کاربری یا رمز اشتباه است!");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
