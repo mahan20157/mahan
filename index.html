@@ -1,71 +1,138 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <title>صفحه اصلی</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mahan Web — صفحه اصلی</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;600;800&display=swap');
 
-body {
-    margin: 0;
-    font-family: "Vazirmatn", sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at top, #1e3c72, #2a5298);
-    animation: fade 1s forwards;
-    color: white;
+:root{
+  --bg1:#0f1724; --bg2:#0b3b6f; --accent1:#7c3aed; --accent2:#06b6d4; --glass:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; font-family:"Vazirmatn",sans-serif;
+  background: radial-gradient( circle at 10% 20%, var(--bg2) 0%, var(--bg1) 50% );
+  color:#e6eef8; display:flex; align-items:center; justify-content:center;
+  padding:30px;
 }
 
-@keyframes fade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+/* card */
+.site {
+  width:100%; max-width:980px;
+  display:grid; grid-template-columns: 1fr 420px; gap:28px;
+  align-items:center;
+  animation:fadeUp .7s ease both;
 }
+@media(max-width:900px){ .site{grid-template-columns:1fr; padding:20px} }
 
-.card {
-    background: rgba(255,255,255,0.12);
-    padding: 40px;
-    width: 350px;
-    text-align: center;
-    border-radius: 18px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+.left {
+  padding:36px; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  box-shadow: 0 8px 40px rgba(2,6,23,0.6); backdrop-filter: blur(8px);
+  border:1px solid rgba(255,255,255,0.04);
 }
+.logo { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.logo svg { width:56px; height:56px; filter: drop-shadow(0 6px 18px rgba(124,58,237,0.24)); }
+.logo h1 { font-size:20px; margin:0; font-weight:800; color: #fff; letter-spacing:0.6px; }
 
-h1 {
-    margin: 0 0 20px 0;
-}
+.lead { font-size:1.05rem; opacity:0.95; margin-bottom:18px; color:#dfeefe }
+.features{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px }
+.badge{ background:var(--glass); padding:8px 12px; border-radius:999px; font-weight:600; color:#cfefff; border:1px solid rgba(255,255,255,0.03) }
 
+.ctas { display:flex; gap:12px; margin-top:6px; }
 .btn {
-    display: inline-block;
-    background: #00eaff;
-    padding: 12px 30px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: black;
-    font-weight: 600;
-    transition: .3s;
+  display:inline-block; padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:700;
+  color:#041124; background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  box-shadow: 0 8px 30px rgba(6,182,212,0.12); transform:translateZ(0);
+}
+.btn.secondary {
+  background:transparent; color:#dbeeff; border:1px solid rgba(255,255,255,0.06);
+  box-shadow:none; font-weight:600;
 }
 
-.btn:hover {
-    background: white;
-    transform: scale(1.05);
+.right {
+  padding:26px; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.04); text-align:center; backdrop-filter: blur(6px);
+}
+.hero {
+  display:flex; flex-direction:column; gap:12px; align-items:center; justify-content:center;
+}
+.small{ font-size:13px; opacity:0.9; color:#d7ecff }
+.huge{ font-size:28px; font-weight:800; margin:6px 0; color:#fff }
+
+.decor {
+  margin-top:18px; height:6px; width:80%; border-radius:999px;
+  background: linear-gradient(90deg, rgba(124,58,237,0.9), rgba(6,182,212,0.9));
+  box-shadow:0 12px 30px rgba(6,182,212,0.12);
+}
+
+/* footer */
+.footer { margin-top:18px; font-size:13px; color:#bcd9f0; opacity:0.85 }
+
+/* animations */
+@keyframes fadeUp {
+  from{ transform: translateY(10px); opacity:0 }
+  to{ transform: translateY(0); opacity:1 }
 }
 </style>
-
 </head>
 <body>
 
-<div class="card">
-    <h1>به سایت ما خوش آمدید ✨</h1>
-    <p>طراحی مدرن و حرفه‌ای</p>
-    <a class="btn" href="login.html">ورود به حساب</a>
+<div class="site">
+
+  <div class="left">
+    <div class="logo">
+      <!-- inline svg logo -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <defs>
+          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#7c3aed"/>
+            <stop offset="1" stop-color="#06b6d4"/>
+          </linearGradient>
+        </defs>
+        <rect rx="12" width="64" height="64" fill="url(#g)"/>
+        <path d="M20 44 L32 20 L44 44 Z" fill="#fff" opacity="0.9"/>
+      </svg>
+
+      <h1>Mahan Web</h1>
+    </div>
+
+    <p class="lead">وب‌سایتی زیبا، مدرن و واکنش‌گرا؛ شامل فرم ثبت‌نام، ورود و داشبورد نمونه. آماده آپلود روی GitHub Pages.</p>
+
+    <div class="features">
+      <div class="badge">UI حرفه‌ای</div>
+      <div class="badge">انیمیشن نرم</div>
+      <div class="badge">ثبت‌نام با localStorage</div>
+      <div class="badge">مناسب GitHub Pages</div>
+    </div>
+
+    <div class="ctas">
+      <a class="btn" href="signup.html">ثبت‌نام رایگان</a>
+      <a class="btn secondary" href="login.html">وارد شوید</a>
+    </div>
+
+    <p class="footer">© 2025 Mahan Web — ساخته شده توسط تو ✨</p>
+  </div>
+
+  <div class="right">
+    <div class="hero">
+      <div class="small">شروع کن</div>
+      <div class="huge">وب‌سایت حرفه‌ای خود را امروز بساز</div>
+      <div class="decor" aria-hidden></div>
+      <p style="max-width:320px; margin-top:14px; color:#d8eefc">با ثبت‌نام سریع می‌توانی وارد داشبورد شوی و امکانات نمایشی ما را ببینی.</p>
+      <div style="margin-top:18px">
+        <a class="btn" href="signup.html">شروع کن</a>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 </body>
 </html>
+
 
 
 
