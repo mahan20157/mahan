@@ -1,111 +1,65 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <title>ورود</title>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ورود — Mahan Web</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;600&display=swap');
 
-body {
-    margin: 0;
-    font-family: "Vazirmatn", sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at bottom, #000428, #004e92);
-    animation: fade 1s forwards;
-    color: white;
-}
+:root{ --bg:#021026; --card:rgba(255,255,255,0.06); --accent1:#7c3aed; --accent2:#06b6d4 }
+*{box-sizing:border-box}
+body{ margin:0; min-height:100vh; font-family:"Vazirmatn",sans-serif; background:linear-gradient(180deg,#001833,#021027); color:#e6f6ff; display:flex; align-items:center; justify-content:center; padding:20px }
 
-@keyframes fade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-.login-box {
-    background: rgba(255,255,255,0.1);
-    padding: 40px;
-    width: 350px;
-    text-align: center;
-    border-radius: 18px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 25px rgba(255,255,255,0.2);
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-input {
-    width: 90%;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 10px 0;
-    border: none;
-    outline: none;
-    font-size: 15px;
-}
-
-.btn {
-    width: 100%;
-    padding: 12px;
-    background: #00eaff;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #fff;
-    transform: scale(1.03);
-}
-
-a.back {
-    display: block;
-    margin-top: 15px;
-    color: #fff;
-    opacity: 0.8;
-    text-decoration: none;
-}
-
-a.back:hover {
-    opacity: 1;
-}
+.card{ width:100%; max-width:420px; background:var(--card); padding:28px; border-radius:16px; text-align:center; box-shadow:0 10px 40px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03); backdrop-filter: blur(8px); }
+h2{ margin:6px 0 16px 0 }
+.input input{ width:100%; padding:12px; border-radius:10px; border:none; outline:none; margin:10px 0; background:rgba(255,255,255,0.03); color:#e6f6ff }
+.btn{ width:100%; padding:12px; border-radius:10px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#021027; font-weight:800; border:none; cursor:pointer; margin-top:10px }
+.link{ display:block; margin-top:12px; color:#cfefff; text-decoration:none }
+.alert{ margin-top:12px; padding:10px; border-radius:8px; font-size:14px }
+.success{ background:rgba(6,182,212,0.12); color:#bff3ff }
+.error{ background:rgba(255,75,75,0.07); color:#ffb8b8 }
+.small{ font-size:13px; color:#cfefff; opacity:0.9; margin-top:8px }
 </style>
-
 </head>
 <body>
 
-<div class="login-box">
-    <h2>ورود به حساب</h2>
+<div class="card">
+  <h2>ورود به Mahan Web</h2>
 
-    <input type="text" id="user" placeholder="نام کاربری">
-    <input type="password" id="pass" placeholder="رمز عبور">
+  <div class="input"><input id="email" placeholder="ایمیل"></div>
+  <div class="input"><input id="pwd" type="password" placeholder="رمز عبور"></div>
 
-    <button class="btn" onclick="login()">ورود</button>
+  <button class="btn" onclick="doLogin()">ورود</button>
 
-    <a class="back" href="index.html">بازگشت</a>
+  <a class="link" href="signup.html">حساب ندارید؟ ثبت‌نام کنید</a>
+
+  <div id="msg"></div>
+  <p class="small">حساب‌ها در مرورگر شما ذخیره می‌شوند (localStorage).</p>
 </div>
 
 <script>
-function login() {
-    let u = document.getElementById("user").value;
-    let p = document.getElementById("pass").value;
+function loadUsers(){ try{return JSON.parse(localStorage.getItem('mw_users')||'[]')}catch(e){return []}}
+function doLogin(){
+  const email = (document.getElementById('email').value||'').trim().toLowerCase();
+  const pwd = document.getElementById('pwd').value;
+  const msg = document.getElementById('msg'); msg.innerHTML='';
 
-    if (u === "mahan" && p === "2015") {
-        alert("ورود موفق ✔️");
-    } else {
-        alert("❌ نام کاربری یا رمز اشتباه است");
-    }
+  if(!email || !pwd){ msg.innerHTML = '<div class="alert error">لطفاً همه فیلدها را پر کنید</div>'; return; }
+
+  const users = loadUsers();
+  const found = users.find(u => u.email === email && u.pwd === btoa(pwd));
+  if(!found){ msg.innerHTML = '<div class="alert error">ایمیل یا رمز اشتباه است</div>'; return; }
+
+  // ست کردن سشن ساده
+  localStorage.setItem('mw_session', JSON.stringify({ email: found.email, name: found.name, since: Date.now() }));
+  msg.innerHTML = '<div class="alert success">ورود موفق! در حال انتقال...</div>';
+  setTimeout(()=> location.href = 'dashboard.html', 900);
 }
 </script>
 
 </body>
 </html>
+
 
 
